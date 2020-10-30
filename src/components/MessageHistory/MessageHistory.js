@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import css from './MessageHistory.module.css';
@@ -13,10 +13,10 @@ const getUserNameAndColor = (users, userId) => {
 
     return userFound.length === 1
         ? [userFound[0].username, userFound[0].nameColor]
-        : ["Unknown", null];
+        : ["Unknown", "#ffffff"];
 }
 
-const MessageHistory = (props) => {
+const MessageHistory = forwardRef((props, ref) => {
     return (
         <div className={css.MessageHistory}>
             {props.messages
@@ -37,9 +37,10 @@ const MessageHistory = (props) => {
                 );
             })
             : null}
+            <div id="bottom" style={{float: "left", clear: "both"}} ref={ref}></div>
         </div>
     );
-};
+});
 
 MessageHistory.propTypes = {
     messages: PropTypes.arrayOf(PropTypes.object),

@@ -12,12 +12,8 @@
 }
 
 .Username {
-    font-size: 20px;
+    font-size: 18px;
     cursor: pointer;
-}
-
-.You .Username {
-    font-weight: 700;
 }
 
 .You .Username:after {
@@ -26,12 +22,28 @@
 }
 
 .Timestamp {
+    font-size: 14px;
     color: #ebf5ff;
 }
 
 .Message {
     color: white;
-    font-size: 24px;
+    font-size: 22px;
     font-family: 'Ubuntu', sans-serif;
     cursor: pointer;
+    word-wrap: break-word;
+}
+
+@media (max-width: 500px) {
+    .Username {
+        display: block;
+    }
+
+    .Timestamp {
+        display: block;
+    }
+    
+    .Spaces {
+        display: none;
+    }
 }

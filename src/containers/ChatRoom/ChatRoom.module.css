@@ -5,6 +5,7 @@
     align-items: center;
     width: 90vw;
     height: 95vh;
+    max-height: 960px;
     border: 5px solid #999999;
     border-radius: 5px;
 }
@@ -34,7 +35,8 @@
 .Middle {
     display: block;
     width: 100%;
-    height: calc(100% - 40px);
+    height: calc(100% - 140px);
+    overflow-y: auto;
 }
 
 .Bottom {
@@ -43,4 +45,15 @@
     bottom: 0;
     transform: translate(-50%, -50%);
     display: block;
+}
+
+@media (max-width: 1200px) {
+    .Left {
+        width: 100%;
+        height: 100%;
+    }
+
+    .Right {
+        width: 0%;
+    }
 }

@@ -9,17 +9,20 @@ import UserBar from '../../components/UserBar/UserBar.js';
 import MessageHistory from '../../components/MessageHistory/MessageHistory.js';
 import InputArea from '../../components/InputArea/InputArea.js';
 import UserList from '../../components/UserList/UserList.js';
+import Button from '../../components/UI/Button/Button.js';
 import Modal from '../../components/UI/Modal/Modal.js';
 
 class ChatRoom extends Component {
     state = {
+        showMiniUserList: false,
         showCopiedSuccessMessage: false,
         copiedMessageTimeout: null,
         changeUsernameErrorMessage: null,
         usernameErrorTimeout: null,
         usersRetrievalError: null,
         messagesRetrievalError: null,
-        sentMessageError: null
+        sentMessageError: null,
+        messagesEndRef: React.createRef()
     };
 
     textCopyHandler = (text) => {
@@ -47,6 +50,18 @@ class ChatRoom extends Component {
         if (event.keyCode === 13 || event.which === 13) {
             this.props.socket.emit(socketEvents.MESSAGE_SENT_ATTEMPT, {message: message, user_id: userId});
             this.props.onMessageClear();
+        }
+    }
+
+    showUsersHandler = () => {
+        this.setState((prevState) => {
+            return {showMiniUserList: !prevState.showMiniUserList};
+        });
+    }
+
+    scrollToBottom = () => {
+        if (this.state.messagesEndRef.current) {
+            this.state.messagesEndRef.current.scrollIntoView({behavior: "smooth"});
         }
     }
 
@@ -102,6 +117,7 @@ class ChatRoom extends Component {
         this.props.socket.on(socketEvents.MESSAGES_RETRIEVAL_RESULT, data => {
             if (data.messages) {
                 this.props.onMessagesRetrieved(data.messages);
+                this.scrollToBottom();
             }
             else if (data.error) {
                 this.setState({messagesRetrievalError: data.error});
@@ -113,6 +129,7 @@ class ChatRoom extends Component {
         this.props.socket.on(socketEvents.MESSAGE_SENT_RESULT, data => {
             if (data.message) {
                 this.props.onNewMessageRetrieved(data.message);
+                this.scrollToBottom();
             }
             else if (data.error) {
                 this.setState({sentMessageError: data.error});
@@ -137,16 +154,19 @@ class ChatRoom extends Component {
                             <UserBar username={this.props.username} nameColor={this.props.nameColor} />
                         </div>
                         <div className={css.Middle}>
-                            <MessageHistory messages={this.props.messages} users={this.props.users} myUserId={this.props.userId} clickedHandler={this.textCopyHandler}/>
+                            <MessageHistory messages={this.props.messages} users={this.props.users} myUserId={this.props.userId} clickedHandler={this.textCopyHandler} ref={this.state.messagesEndRef}/>
                         </div>
                         <div className={css.Bottom}>
                             <InputArea userId={this.props.userId} value={this.props.inputMessage} keystrokeHandler={this.messageTypedHandler} messageSentHandler={this.messageSentHandler} />
                         </div>
                     </div>
                     <div className={css.Right}>
-                        <UserList users={this.props.users} myUserId={this.props.userId} />
+                        <UserList users={this.props.users} myUserId={this.props.userId} showMini={this.state.showMiniUserList} />
                     </div>
                 </div>
+                <Button showUsersHandler={this.showUsersHandler}>
+                    <i className="fas fa-users"></i>
+                </Button>
                 <Modal show={this.state.showCopiedSuccessMessage}>Text Copied!</Modal>
                 <Modal show={this.state.changeUsernameErrorMessage != null} error>{this.state.changeUsernameErrorMessage}</Modal>
             </Fragment>

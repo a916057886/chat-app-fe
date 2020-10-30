@@ -11,7 +11,7 @@ const Message = (props) => {
         <div className={messageBoxCss.join(" ")}>
             <div className={css.Info}>
                 <span className={css.Username} style={{color: props.nameColor}} onClick={() => props.clickedHandler(props.username)}>{props.username}</span>
-                &nbsp;&nbsp;-&nbsp;&nbsp;
+                <span className={css.Spaces}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <span className={css.Timestamp}>{props.timestamp}</span>
             </div>
             <div style={{paddingTop: "3px"}}>
