@@ -33,3 +33,9 @@
         display: none;
     }
 }
+
+@media (min-width: 1201px) {
+    .MiniUserList {
+        display: none;
+    }
+}

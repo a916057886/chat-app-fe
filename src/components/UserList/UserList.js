@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import css from './UserList.module.css';
 import User from './User/User.js';
 
 const UserList = (props) => {
-    const userList = !props.showMini
-    ? (
+    const normalUserList = (
         <div className={css.UserList}>
             <h3 className={css.Title}>Online User(s)</h3>
             {props.users
@@ -21,8 +20,8 @@ const UserList = (props) => {
             })
             : null}
         </div>
-    )
-    : (
+    );
+    const miniUserList = props.showMini ? (
         <div className={css.MiniUserList}>
             <h3 className={css.Title}>Online User(s)</h3>
             {props.users
@@ -37,9 +36,14 @@ const UserList = (props) => {
             })
             : null}
         </div>
-    );
+    ) : null;
 
-    return userList;
+    return (
+        <Fragment>
+            {normalUserList}
+            {miniUserList}
+        </Fragment>
+    );
 };
 
 UserList.propTypes = {
