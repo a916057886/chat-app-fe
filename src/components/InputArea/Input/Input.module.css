@@ -1,0 +1,48 @@
+.InputBox {
+    background: #2f3640;
+    height: 30px;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.Input {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 20px;
+    line-height: 30px;
+    width: 0;
+}
+
+.SendButton {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    color: #00b7ff;
+    background: #2f3640;
+    float: right;
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border-style: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s linear;
+}
+
+.InputBox:focus, .InputBox:hover, .Active {
+    width: 50vw;
+}
+
+.InputBox:focus > .Input, .InputBox:hover > .Input, .Active > .Input {
+    width: calc(50vw - 25px);
+    padding: 0 10px;
+}
+
+.InputBox:focus > .SendButton, .InputBox:hover > .SendButton, .Active > .SendButton {
+    display: none;
+}

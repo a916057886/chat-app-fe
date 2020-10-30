@@ -1,0 +1,15 @@
+.Modal {
+    position: absolute;
+    left: 50%;
+    top: 25px;
+    transform: translate(-50%, -50%);
+    background: #f3f3f3;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.Error {
+    border: 1px solid red;
+    background: #ff8383;
+}

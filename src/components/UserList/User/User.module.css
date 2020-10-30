@@ -1,0 +1,28 @@
+.User {
+    font-size: 20px;
+    padding: 10px 20px;
+    border-bottom: 1px solid #999999;
+    font-family: 'Lato', sans-serif;
+}
+
+.User:hover {
+    background-color: #2e2e2e;
+}
+
+.OnlineIndicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: green;
+}
+
+.You .Username {
+    font-weight: 700;
+}
+
+.You .Username:after {
+    color: #ffffff;
+    content: ' *';
+}

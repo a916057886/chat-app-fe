@@ -1,0 +1,7 @@
+.MessageHistory {
+    width: calc(100%);
+    height: calc(100% - 100px);
+    padding-bottom: 100px;
+    overflow-y: auto;
+    background: #666666;
+}

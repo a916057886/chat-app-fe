@@ -1,0 +1,46 @@
+.ChatRoom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 95vh;
+    border: 5px solid #999999;
+    border-radius: 5px;
+}
+
+.Left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+    border-right: 3px solid black;
+}
+
+.Right {
+    display: block;
+    width: 20%;
+    height: 100%;
+}
+
+.Top {
+    display: block;
+    width: 100%;
+    height: 40px;
+    border-bottom: 3px solid black;
+}
+
+.Middle {
+    display: block;
+    width: 100%;
+    height: calc(100% - 40px);
+}
+
+.Bottom {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, -50%);
+    display: block;
+}

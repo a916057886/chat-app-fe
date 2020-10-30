@@ -1,0 +1,37 @@
+.MessageBox {
+    padding: 10px 25px;
+    border-bottom: 1px solid black;
+}
+
+.MessageBox.You {
+    background: #8d8d8d;
+}
+
+.MessageBox:hover {
+    background: #414141;
+}
+
+.Username {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.You .Username {
+    font-weight: 700;
+}
+
+.You .Username:after {
+    color: #ffffff;
+    content: ' (YOU)';
+}
+
+.Timestamp {
+    color: #ebf5ff;
+}
+
+.Message {
+    color: white;
+    font-size: 24px;
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
+}
