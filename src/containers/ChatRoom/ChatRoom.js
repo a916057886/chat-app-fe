@@ -9,7 +9,6 @@ import UserBar from '../../components/UserBar/UserBar.js';
 import MessageHistory from '../../components/MessageHistory/MessageHistory.js';
 import InputArea from '../../components/InputArea/InputArea.js';
 import UserList from '../../components/UserList/UserList.js';
-import Button from '../../components/UI/Button/Button.js';
 import Modal from '../../components/UI/Modal/Modal.js';
 
 class ChatRoom extends Component {
@@ -151,7 +150,7 @@ class ChatRoom extends Component {
                 <div className={css.ChatRoom}>
                     <div className={css.Left}>
                         <div className={css.Top}>
-                            <UserBar username={this.props.username} nameColor={this.props.nameColor} />
+                            <UserBar username={this.props.username} nameColor={this.props.nameColor} showUsersHandler={this.showUsersHandler} />
                         </div>
                         <div className={css.Middle}>
                             <MessageHistory messages={this.props.messages} users={this.props.users} myUserId={this.props.userId} clickedHandler={this.textCopyHandler} ref={this.state.messagesEndRef}/>
@@ -164,9 +163,6 @@ class ChatRoom extends Component {
                         <UserList users={this.props.users} myUserId={this.props.userId} showMini={this.state.showMiniUserList} />
                     </div>
                 </div>
-                <Button showUsersHandler={this.showUsersHandler}>
-                    <i className="fas fa-users"></i>
-                </Button>
                 <Modal show={this.state.showCopiedSuccessMessage}>Text Copied!</Modal>
                 <Modal show={this.state.changeUsernameErrorMessage != null} error>{this.state.changeUsernameErrorMessage}</Modal>
             </Fragment>
