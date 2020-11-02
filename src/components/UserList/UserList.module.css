@@ -4,11 +4,11 @@
     padding: 10px;
     overflow-y: auto;
     overflow-x: none;
-    background-color: #404040;
+    background-color: #ffffff;
 }
 
 .Title {
-    color: #c0c0c0;
+    color: #6b6b6b;
     text-align: center;
     font-size: 26px;
 }
@@ -21,10 +21,10 @@
     min-width: 200px;
     height: 93vh;
     max-height: 960px;
-    border: 5px solid black;
+    border: 2px solid black;
     border-radius: 5px;
     padding: 10px;
-    background: #404040;
+    background: #ffffff;
     overflow-y: auto;
 }
 

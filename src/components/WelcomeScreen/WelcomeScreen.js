@@ -6,7 +6,7 @@ import css from './WelcomeScreen.module.css';
 const WelcomeScreen = (props) => {
     return (
         <div className={css.WelcomeScreen}>
-            {props.isNewUser ? "Welcome To WhatsChat" : "Welcome Back"}
+            {props.isNewUser ? "Welcome To WhatsChat" : "Greeting"}
             <div className={css.Username} style={{color: props.nameColor}}>{props.username}</div>
         </div>
     );

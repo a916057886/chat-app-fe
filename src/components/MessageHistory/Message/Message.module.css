@@ -1,37 +1,64 @@
 .MessageBox {
     padding: 10px 25px;
-    border-bottom: 1px solid black;
 }
 
-.MessageBox.You {
-    background: #8d8d8d;
+.Info {
+    margin-bottom: 10px;
 }
 
-.MessageBox:hover {
-    background: #414141;
+.You .Info {
+    float: right;
 }
 
 .Username {
+    color: #000000;
     font-size: 18px;
     cursor: pointer;
 }
 
+.Username:hover {
+    font-weight: 500;
+}
+
 .You .Username:after {
-    color: #ffffff;
+    color: rgb(236,100,75);
+    animation: wheelHueColor 25s infinite;
     content: ' (YOU)';
+}
+
+.Timestamp:before {
+    content: '\00a0\00a0\00a0\00a0\00a0';
 }
 
 .Timestamp {
     font-size: 14px;
-    color: #ebf5ff;
+    color: #727272;
 }
 
 .Message {
-    color: white;
+    box-shadow: 1px 1px 3px #000000;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: #000000;
+    background: #f7f7f7;
     font-size: 22px;
     font-family: 'Ubuntu', sans-serif;
     cursor: pointer;
-    word-wrap: break-word;
+    word-break: break-word;
+    float: left;
+}
+
+.Message:hover {
+    background: #e9e9e9;
+}
+
+.You .Message {
+    background: #a3a8e9;
+    float: right;
+}
+
+.You .Message:hover {
+    background: #8c92e6;
 }
 
 @media (max-width: 500px) {
@@ -42,8 +69,29 @@
     .Timestamp {
         display: block;
     }
+
+    .Timestamp:before {
+        content: '';
+    }
+
+    .You .Timestamp {
+        float: right
+    }
     
     .Spaces {
         display: none;
     }
+}
+
+@keyframes wheelHueColor {
+    from, to { color: rgb(236,100,75); }
+    10%      { color: rgb(219,10,91); }
+    20%      { color: rgb(174,168,211); }
+    30%      { color: rgb(89,171,227); }
+    40%      { color: rgb(37,116,169); }
+    50%      { color: rgb(3,201,169); }
+    60%      { color: rgb(22,160,133); }
+    70%      { color: rgb(233,212,96); }
+    80%      { color: rgb(243,156,18); }
+    90%      { color: rgb(236,240,241); }
 }
